@@ -44,5 +44,44 @@ document
             return;
         }
 
+    //4. L'usuari ha de ser major d'edat per registrar-se. Aquesta validació depèn de la data de naixement proporcionada. Heu de calcular l'edat de l'usuari i mostrar un missatge d'alerta si és menor de 18 anys.
+        const dataNaixement = new Date(data_naixement);
+        const avui = new Date();
+        const edat = avui.getFullYear() - dataNaixement.getFullYear();
+        if (avui.getMonth() < dataNaixement.getMonth() || (avui.getMonth() === dataNaixement.getMonth() && avui.getDate() < dataNaixement.getDate())) {
+            edat--;
+        }
+        if (edat < 18) {
+            alert("Has de ser major d'edat per registrar-te");
+            return;
+        }
+
+            //5. El camp del DNI/NIF ha de tenir un format vàlid. Utilitzeu l'expressió regular proporcionada a continuació per validar aquest camp:
+    const dniRegex = /^[a-zA-Z0-9]?[0-9]{7,8}[a-zA-Z0-9]?$/;
+    if (!dniRegex.test(dni)) {
+        alert("El DNI/NIF no és vàlid.");
+        return;
+    }
+
+    const formData = {
+        name,
+        surname,
+        email,
+        password,
+        dni,
+        birthdate,
+        gender,
+    }
+
+    sessionStorage.setItem('formData', JSON.stringify(formData));
+
+    const storedFormData = sessionStorage.getItem('formData');
+    console.log(storedFormData);
+
+    window.location.href = '../ex2/exercici2.html';
+
+
+
+
 
     });
