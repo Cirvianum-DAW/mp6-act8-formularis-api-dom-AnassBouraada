@@ -47,30 +47,33 @@ document
     //4. L'usuari ha de ser major d'edat per registrar-se. Aquesta validació depèn de la data de naixement proporcionada. Heu de calcular l'edat de l'usuari i mostrar un missatge d'alerta si és menor de 18 anys.
         const dataNaixement = new Date(data_naixement);
         const avui = new Date();
-        const edat = avui.getFullYear() - dataNaixement.getFullYear();
-        if (avui.getMonth() < dataNaixement.getMonth() || (avui.getMonth() === dataNaixement.getMonth() && avui.getDate() < dataNaixement.getDate())) {
-            edat--;
-        }
-        if (edat < 18) {
-            alert("Has de ser major d'edat per registrar-te");
-            return;
-        }
+        const edat = dataNaixement.getFullYear(); - avui.getFullYear();
 
-            //5. El camp del DNI/NIF ha de tenir un format vàlid. Utilitzeu l'expressió regular proporcionada a continuació per validar aquest camp:
-    const dniRegex = /^[a-zA-Z0-9]?[0-9]{7,8}[a-zA-Z0-9]?$/;
-    if (!dniRegex.test(dni)) {
-        alert("El DNI/NIF no és vàlid.");
+        if (edat < 18) {
+            alert("Has de ser major d'edat per registrar-te.");
+            return;
+          }
+
+    // Exemple de validació: Verificar el format del DNI/NIF
+    const idNumberRegex = /^[0-9A-Za-z]{1,10}$/;
+    if (!idNumberRegex.test(dni)) {
+      alert('El DNI/NIF no té un format vàlid.');
+      return;
+    }
+
+    if (!termsAccepted) {
+        alert('Has de accepytar els termes i condicines de la pagina fill de puta');
         return;
     }
 
     const formData = {
-        name,
-        surname,
+        nom,
+        cognoms,
         email,
-        password,
+        contrasenya,
+        data_naixement,
         dni,
-        birthdate,
-        gender,
+        termsAccepted,
     }
 
     sessionStorage.setItem('formData', JSON.stringify(formData));
@@ -78,10 +81,6 @@ document
     const storedFormData = sessionStorage.getItem('formData');
     console.log(storedFormData);
 
-    window.location.href = '../ex2/exercici2.html';
+    window.location.href = 'infoMeteorologica.html';
 
-
-
-
-
-    });
+});

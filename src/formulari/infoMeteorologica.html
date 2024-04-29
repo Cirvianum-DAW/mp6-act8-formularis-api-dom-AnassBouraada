@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="styles-form.css">
+    <title>informació meteorològica</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Previsió meteorològica</h1>
+        <form id="meteoForm" novalidate>
+            <label for="ciutat">Ciutat:</label>
+            <input type="text" id="ciutat" class="cmap" required>
+            <br>
+
+            <label for="CodiPostal">Codi Postal:</label>
+            <input type="text" id="CodiPostal" class="cmap" required>
+            <br>
+            
+            <label for="pais">Pais:</label>
+            <input type="pais" id="pais" class="cmap" required>
+            <br>
+
+            <button type="submit">Buscar</button>
+          
+        </form>
+        <script src="script.js"></script>
+</body>
+</html>
